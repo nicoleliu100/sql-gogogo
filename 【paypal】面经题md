@@ -1,0 +1,40 @@
+面经title：决策分析师
+
+
+
+1. 给一张打印好的表，上面字段分别是卖家id、买家id、交易日期、交易金额、识别出欺诈的日期、欺诈金额（如果识别出欺诈，则欺诈金额为交易金额）
+
+五个问题：
+○ sql：七、八、九月份累计交易金额量
+○ sql：七、八、九月份最后一天观测到的累计交易金额量（这个题记不清了，但是重点在于识别出欺诈的日期）
+○ 写出上一题的伪代码
+○ 你觉得交易的风险增加了吗（表面上看欺诈笔数是逐月递减的，但是因为识别出欺诈的日期通常在交易后的许多天甚至几个月后，所以不好判断？）
+○ 你从表中还可以看出什么：有一个卖家id出现许多欺诈交易（我只答了这一个，可能还有别的），然后会引出业务题
+
+
+
+2. 有两张表：
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190331102559719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzgxNDE1NQ==,size_16,color_FFFFFF,t_70)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190331102650375.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzgxNDE1NQ==,size_16,color_FFFFFF,t_70)
+
+求出每个国家发生交易的总额（买家和卖家在两个国家的分别计入）：
+
+
+
+3. 有一张表
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190331115429535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzgxNDE1NQ==,size_16,color_FFFFFF,t_70)
+
+
+
+- 求出每个userid连续交易的最长天数(适用于一天有多笔交易的情况）
+
+- 求出每个userid连续不交易的最长天数：
+
+
+
+题目来源reference
+
+https://blog.csdn.net/weixin_43814155/article/details/88926850?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1
