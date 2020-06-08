@@ -1,0 +1,3 @@
+having在group by后进行过滤
+
+where在group by之前进行过滤
