@@ -1,4 +1,4 @@
-背景
+### 背景
 
 在item2vec中，首先要构建用户行为序列（比如用户连续浏览sku的序列、用户下载app的序列等）。下面以用户浏览sku为例，分析一下问题的背景。
 
@@ -8,7 +8,7 @@
 
 
 
-思路
+### 思路
 
 （20200608）
 
@@ -29,3 +29,55 @@
 
 - 如果直接用sql怎么写？
 - 如果我使用pyspark，可以借助udf，要怎么写？
+
+
+
+### 代码
+
+
+
+#### 直接用sql
+
+没想出来。。。。
+
+
+
+#### 使用pyspark
+
+- 把用户的浏览拼成一个list，格式为 [time1#id1, time2#id2,...]
+
+- 然后定义一个split_session函数对这个list进行处理
+  - 遍历数组，求当前位置的time和下一个位置的time之差
+  - 根据时间差和自定义间隔之间的大小关系作出相应的处理逻辑
+
+```
+def split_session(collect_coupon_list):
+    # 超过5min 则断开
+    interval = 5
+    
+    res = []
+    len_list = len(collect_coupon_list)
+    
+    # 用continous_session保存相邻间隔始终小于5min的记录
+    continous_session = []
+    
+    # 开始遍历
+    for i in range(len_list-1):
+        cur_collect_time = datetime.datetime.strptime(collect_coupon_list[i].split("#")[0], "%Y-%m-%d %H:%M:%S.%f")
+        next_collect_time = datetime.datetime.strptime(collect_coupon_list[i+1].split("#")[0], "%Y-%m-%d %H:%M:%S.%f")
+        # 两次间隔的time_diff
+        time_diff = next_collect_time - cur_collect_time
+        
+        if  time_diff <= datetime.timedelta(seconds=interval*60):
+            continous_session.append(collect_coupon_list[i].split("#")[1])
+        else:
+            res.append(continous_session)
+            continous_session = []
+    
+    continous_session.append(collect_coupon_list[len_list-1].split("#")[1])
+    res.append(continous_session)        
+    return res
+```
+
+自测OK~
+
