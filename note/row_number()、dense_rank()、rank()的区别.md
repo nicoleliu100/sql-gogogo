@@ -1,0 +1,5 @@
+| 函数         | 说明                                                         | 举例SQL                                       | 运行结果                          |
+| ------------ | ------------------------------------------------------------ | --------------------------------------------- | --------------------------------- |
+| ROW_NUMBER() | assigns **unique numbers** to each row within the PARTITION given the ORDER BYclause（row_number 是只用来排序的，同样的内容会排在相邻位置，但是序号是自增且唯一的。） | SELECT v, ROW_NUMBER() OVER(ORDER BY v)FROM t | [a:1,a:2,a:3,b:4,c:5,c:6,d:7,e:8] |
+| RANK()       | 和row_numver()函数很相似，唯一区别是： “equal” rows are ranked the same. | SELECT v, RANK() OVER(ORDER BY v)FROM t       | [a:1,a:1,a:1,b:4,c:5,c:5,d:7,e:8] |
+| DENSE_RANK() | DENSE_RANK() is a rank with no gaps, i.e. it is *“dense”*.相同的值rank the same && 返回的序号之前是没有间隔。（dense的意思是紧密的，顾名思义，序号之间没有间隔 ） | SELECT v, DENSE_RANK() OVER(ORDER BY v)FROM t | [a:1,a:1,a:1,b:2,c:3,c:3,d:4,e:5] |
