@@ -62,7 +62,7 @@ fs get <from source_path_and_file> <to dest_path_and_file>
 
 #### 查看文件夹里面每个文件的大小
 
-**du:** It will give the size of each file in directory.
+**du:** It will give the size of each file in director
 
 ```
 hdfs dfs -du <dirName>

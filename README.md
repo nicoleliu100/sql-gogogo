@@ -6,8 +6,9 @@ I may also add some sql note later.
 
 
 
-- 【lc】题目来自leetcode
-- 【true】遇到过的真题
-- 【prj】题目来自真实工作中遇到的一些难题
+- 【lc】leetcode
+- 【true】真题
+- 【prj】工作中遇到的
 - 【XXX company】来自网上的帖子（面经）
-- 不带标签的也是来自网上的帖子但是不是面经
+
+  
